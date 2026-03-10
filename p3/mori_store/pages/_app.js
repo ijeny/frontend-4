@@ -1,16 +1,16 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import '../styles/globals.css';
+import "bootstrap/dist/css/bootstrap.min.css";
+import "../styles/globals.css";
 
-import navbar from '../components/navbar';
-import { CartProvider } from '../contexts/CartContext';
+import Navbar from "../components/navbar";
+import { CartProvider } from "../contexts/CartContext";
 
-function MyApp({ Component, pageProps}) {
-    return (
-        <CartProvider>
-            <navbar />
-            <Component {...pageProps} />
-        </CartProvider>
-    );
+function MyApp({ Component, pageProps }) {
+  return (
+    <CartProvider>
+      <Navbar />
+      <Component {...pageProps} />
+    </CartProvider>
+  );
 }
 
 export default MyApp;
