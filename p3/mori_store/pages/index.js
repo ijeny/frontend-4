@@ -5,9 +5,9 @@ import { useState } from "react";
 const products = [
   {
     id: 1,
-    name: "Alana",
+    name: "Alena",
     price: 250000,
-    image: "/images/alana.jpg",
+    image: "/images/alena.jpg",
     sold: 110,
   },
   {
@@ -41,36 +41,38 @@ export default function HomePage() {
     );
 
     return (
-        <div className="container mt-4">
+      <div className="container mt-4">
+        {/* BANNER */}
+        <div className="banner rounded shadow-sm mb-4"></div>
 
-            {/* BANNER */}
-            <div className="banner rounded shadow-sm mb-4"></div>
+        {/* GRID PRODUK */}
+        <div className="row">
+          {filtered.map((p) => (
+            <div key={p.id} className="col-6 col-md-3 mb-4">
+              <div className="product-card shadow-sm">
+                <img src={p.image} className="product-img" alt={p.name} />
 
-            {/* GRID PRODUK */}
-            <div className="row">
-                {filtered.map((p) => (
-                    <div key={p.id} className="col-6 col-md-3 mb-4">
-                        <div className="product-card shadow-sm">
-                            
-                            <img src={p.image} className="product-img" alt={p.name}/>
+                <div className="p-2">
+                  <h6 className="product-title">{p.name}</h6>
 
-                            <div className="p-2">
-                                <h6 className="product-title">{p.name}</h6>
+                  <div className="d-flex justify-content-between align-items-center mt-2">
+                    <span className="product-price">
+                      Rp {p.price.toLocaleString("id-ID")}
+                    </span>{" "}
+                    <span className="text-muted small">{p.sold} terjual</span>
+                  </div>
 
-                                <div className="d-flex justify-content-between align-items-center mt-2">
-                                    <span className="product-price">Rp {p.price.toLocaleString()}</span>
-                                    <span className="text-muted small">{p.sold} terjual</span>
-                                </div>
-
-                                <link href={`/product/${p.id}`} className="btn btn-orange w-100 mt-2">
-                                Lihat Detail
-                                </link>
-                            </div>
-
-                        </div>
-                    </div>
-                ))}
+                  <Link
+                    href={`/product/${p.id}`}
+                    className="btn btn-orange w-100 mt-2"
+                  >
+                    Lihat Detail
+                  </Link>
+                </div>
+              </div>
             </div>
+          ))}
         </div>
+      </div>
     );
 }
